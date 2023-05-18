@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8888;
-const { authMiddleware } = require("./src/middleware/authentication-jwt");
-const { initializeDB } = require("./src/config/dbConfig");
-const { bookRouter, authRouter, userRouter } = require("./src/routes");
-const { mdwLogging } = require("./src/middleware");
+const { authMiddleware } = require("./middleware/authentication-jwt");
+const { initializeDB } = require("./config/dbConfig");
+const { bookRouter, authRouter, userRouter } = require("./routes");
+const { mdwLogging } = require("./middleware");
 
 
 app.use(express.json());
