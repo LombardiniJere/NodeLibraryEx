@@ -7,16 +7,11 @@ const Book = sequelize.define("Books", {
     primaryKey: true,
     validate: {
       isNumeric: true,
-
     },
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      
-      
-    },
   },
   author: {
     type: DataTypes.STRING,
@@ -27,12 +22,14 @@ const Book = sequelize.define("Books", {
     allowNull: false,
     validate: {
       isNumeric: true,
-      
     },
   },
   bookstore: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+    },
   },
 });
 
