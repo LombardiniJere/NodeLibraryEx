@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const bookService = require("../services/book");
-const mdwLogging = require("../middleware");
 
 // GET BOOK BY NAME //
-router.get("/", mdwLogging, (res, req) => {
-  const { isbn, name, author, year, bookstore } = req.body;
-  res.send({ isbn, name, author, year, bookstore });
+router.get("/", (res, req) => {
+  const { id, isbn, name, author, year, bookstore } = req.body;
+  res.send({id, isbn, name, author, year, bookstore });
 });
 
 // GET BOOK BY ISBN //
@@ -41,7 +40,7 @@ router.get('/', async (req, res) => {
 });
 
 // CREATE BOOK //
-router.post("/loadBook", async (res, req) => {
+router.post("/", async (res, req) => {
   const { isbn, name, author, year, bookstore } = req.body;
   try {
     const newBook = await bookService.createBook({

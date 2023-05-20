@@ -3,12 +3,12 @@ const payload = { user: "admin", password: "admin" };
 
 
 axios
-  .post("http://localhost:8080/login", payload)
+  .post("http://localhost:8888/login", payload)
   .then(function (response) {
     console.log(response.data);
     const token = response.data.token;
     axios
-      .get("http://localhost:8080/user/1", {
+      .get("http://localhost:8888/user/1", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

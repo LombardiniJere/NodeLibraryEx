@@ -4,7 +4,7 @@ const { Book } = require("../models");
 const createBook = async (bookOptions) => {
   try {
     const newBook = await Book.create(bookOptions);
-    // const ticket = await Ticket.create({ used: false, BookId: newBook.id });
+    // const ticket = await Ticket.create({ used: false, BookIsbn: newBook.isbn });
     return newBook;
   } catch (error) {
     throw error;

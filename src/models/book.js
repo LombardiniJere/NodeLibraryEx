@@ -1,15 +1,22 @@
 const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/dbConfig");
+const { sequelize } = require("../config");
 
 const Book = sequelize.define("Books", {
   isbn: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true,
+    primaryKey: true,
+    validate: {
+      isNumeric: true,
+
+    },
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      
+      
+    },
   },
   author: {
     type: DataTypes.STRING,
@@ -18,6 +25,10 @@ const Book = sequelize.define("Books", {
   year: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      isNumeric: true,
+      
+    },
   },
   bookstore: {
     type: DataTypes.INTEGER,
