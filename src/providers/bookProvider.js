@@ -17,7 +17,7 @@ const getBook = async (isbn) => {
     if (book) {
       return book;
     } else {
-      throw new Error("Usuario no encontrado");
+      throw new Error("Libro no encontrado");
     }
   } catch (error) {
     throw error;

@@ -1,5 +1,7 @@
 const { Op } = require("sequelize");
-const { User, Ticket  } = require("../models");
+const { User, Ticket } = require("../models");
+const { UserNotFoundErr } = require("../errors/userNotFound");
+
 
 const createUser = async (userOptions) => {
   try {

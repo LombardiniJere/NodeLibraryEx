@@ -11,8 +11,7 @@ app.use(express.json());
 app.use(mdwLogging);
 app.use("/login", authRouter);
 app.use("/user", authMiddleware, userRouter);
-
-app.use("/book", authMiddleware, bookRouter);
+app.use("/book", bookRouter);
 
 
 app.listen(PORT, async () => {
