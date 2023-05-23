@@ -1,4 +1,4 @@
-const { createBook } = require("./book");
+const { createBook } = require("./bookControllers");
 
 
 module.exports = { createBook };

@@ -20,6 +20,5 @@ const deleteUser = async (id) => {
   return await userProvider.deleteUser(id);
 };
 
-const queryUser = (name) => {};
 
 module.exports = { getUser, getUsers, createUser, updateUser, deleteUser };
