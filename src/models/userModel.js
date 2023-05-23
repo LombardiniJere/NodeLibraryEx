@@ -42,10 +42,12 @@ const User = sequelize.define("Users", {
 
 // Associations DB
 
-User.hasMany(Book, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE',
-});
+User.hasMany(Book);
+
+// User.hasMany(Book, {
+//   foreignKey: 'userId',
+//   onDelete: 'CASCADE',
+// });
 
 module.exports = User;
 

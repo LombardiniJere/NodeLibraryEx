@@ -34,15 +34,12 @@ const Book = sequelize.define("Books", {
 });
 
 // Associations DB
-Book.belongsTo(User, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE',
-});
+Book.belongsTo(Library);
 
-Book.belongsTo(Library, {
-  foreignKey: 'libraryId',
-  onDelete: 'CASCADE',
-});
 
+// Book.belongsTo(Library, {
+//   foreignKey: 'libraryId',
+//   onDelete: 'CASCADE',
+// });
 
 module.exports = Book;
