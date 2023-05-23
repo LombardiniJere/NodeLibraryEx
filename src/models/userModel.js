@@ -2,6 +2,15 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
 
 const User = sequelize.define("Users", {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+    validate: {
+      isNumeric: true,
+    },
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -41,13 +50,8 @@ const User = sequelize.define("Users", {
 });
 
 // Associations DB
+// User.hasMany(Book);
 
-User.hasMany(Book);
-
-// User.hasMany(Book, {
-//   foreignKey: 'userId',
-//   onDelete: 'CASCADE',
-// });
 
 module.exports = User;
 

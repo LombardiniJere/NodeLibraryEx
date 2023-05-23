@@ -1,5 +1,5 @@
-const Book = require("./bookModel");
-const User = require("./userModel");
-const Library = require("./libraryModel");
+const bookModel = require("./bookModel");
+const userModel = require("./userModel");
+const libraryModel = require("./libraryModel");
 
-module.exports = { Book, User, Library };
+module.exports = { bookModel, userModel, libraryModel };

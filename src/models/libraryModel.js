@@ -3,6 +3,15 @@ const { sequelize } = require("../config");
 
 
 const Library = sequelize.define("Libraries", {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+    validate: {
+      isNumeric: true,
+    },
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -30,15 +39,8 @@ const Library = sequelize.define("Libraries", {
 
 // Associations DB
 
-Library.hasMany(Book);
+// Library.hasMany(Book);
 
-// Library.hasMany(Book, {
-//   foreignKey: 'libraryId',
-//   onDelete: 'CASCADE',
-// });
-// The foreignKey option specifies the foreign key column to be used in the Book model to establish the relationship. 
-// The onDelete: 'CASCADE' option ensures that if a library is deleted, all associated books will be deleted as well.
-
-
+module.exports = Library;
 // Libraries and Books:
 // A library can have multiple books in its collection.
