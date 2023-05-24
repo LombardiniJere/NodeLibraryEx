@@ -1,11 +1,8 @@
-
-const { Library } = require("../models");
-
-
+const { libraryModel } = require("../models");
 
 const createLibrary = async (libraryOptions) => {
   try {
-    const newLibrary = await Library.create(libraryOptions);
+    const newLibrary = await libraryModel.create(libraryOptions);
     // const ticket = await Ticket.create({ used: false, UserId: newLibrary.id });
     return newLibrary;
   } catch (error) {

@@ -52,7 +52,6 @@ const User = sequelize.define("Users", {
 // Associations DB
 // User.hasMany(Book);
 
-
 module.exports = User;
 
 // Users and Books:

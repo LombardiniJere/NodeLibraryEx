@@ -1,7 +1,6 @@
 const express = require('express');
-const { libraryService } = require("../services");
+const libraryService = require("../services/libraryService");
 const router = express.Router();
-
 
 
 /* CREATE LIBRARY */

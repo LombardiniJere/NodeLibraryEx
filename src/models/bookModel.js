@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
-
+const Library = require("./libraryModel");
+const User = require("./userModel");
 
 
 const Book = sequelize.define("Books", {
@@ -26,14 +27,15 @@ const Book = sequelize.define("Books", {
       isNumeric: true,
     },
   },
-  library: {
-    type: DataTypes.STRING,
+  libraryId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 });
 
 // Associations DB
-// User.hasMany(Book);
-// Library.hasMany(Book);
+Book.belongsTo(Library, {
+  foreignKey: 'libraryId',
+});
 
 module.exports = Book;

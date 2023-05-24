@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
-
+const Book = require("./bookModel");
 
 const Library = sequelize.define("Libraries", {
   id: {
@@ -38,7 +38,6 @@ const Library = sequelize.define("Libraries", {
 });
 
 // Associations DB
-
 // Library.hasMany(Book);
 
 module.exports = Library;

@@ -1,5 +1,10 @@
 
-const { libraryProvider } = require("../providers");
+const libraryProvider = require("../providers/libraryProvider");
+
+
+const createLibrary = async (library) => {
+  return await libraryProvider.createLibrary(library);
+};
 
 // const getLibrary = async (id) => {
 //   return await userProvider.getUser(id);
@@ -8,10 +13,6 @@ const { libraryProvider } = require("../providers");
 // const getUsers = async (options) => {
 //   return await userProvider.getUsers(options);
 // };
-
-const createLibrary = async (library) => {
-  return await libraryProvider.createLibrary(library);
-};
 
 // const updateUser = async (id, user) => {
 //   return await userProvider.updateUser(id, user);
