@@ -1,5 +1,5 @@
 const express = require('express');
-const libraryService = require("../services/libraryService");
+const { libraryService } = require("../services");
 const router = express.Router();
 
 
