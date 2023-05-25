@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
       name,
       lastName,
       email,
-      password
+      password,
     });
     res.status( 201 ).json( { message: "User successfully created", newUser } );
   } catch (error) {

@@ -5,7 +5,7 @@ const { authAdminRoute } = require("../middleware");
 
 
 /* CREATE LIBRARY */
-router.post('/library', async (req, res) => {
+router.post('/', async (req, res) => {
   const { name, location, phone } = req.body;
   try {
     const newLibrary = await libraryService.createLibrary({
@@ -51,10 +51,5 @@ router.get('/', async (req, res) => {
   };
 });
 
-
-// // Find all users
-// const libraries = await Library.findAll();
-// console.log(libraries.every(library => library instanceof Library)); // true
-// console.log("All users:", JSON.stringify(libraries, null, 2));
 
 module.exports = router;

@@ -1,26 +1,26 @@
 
-const libraryProvider = require("../providers/libraryProvider");
+const { libraryProvider } = require("../providers");
 
 
 const createLibrary = async (library) => {
   return await libraryProvider.createLibrary(library);
 };
 
-// const getLibrary = async (id) => {
-//   return await userProvider.getUser(id);
+const getLibrary = async (id) => {
+  return await libraryProvider.getLibrary(id);
+};
+
+const getLibraries = async (options) => {
+  return await libraryProvider.getLibraries(options);
+};
+
+// const updateLibrary = async (id, user) => {
+//   return await libraryProvider.updateLibrary(id, user);
 // };
 
-// const getUsers = async (options) => {
-//   return await userProvider.getUsers(options);
-// };
-
-// const updateUser = async (id, user) => {
-//   return await userProvider.updateUser(id, user);
-// };
-
-// const deleteUser = async (id) => {
-//   return await userProvider.deleteUser(id);
+// const deleteLibrary = async (id) => {
+//   return await libraryProvider.deleteLibrary(id);
 // };
 
 
-module.exports = { createLibrary };
+module.exports = { createLibrary, getLibrary, getLibraries };
