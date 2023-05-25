@@ -20,7 +20,6 @@ router.post('/library', async (req, res) => {
   };
 });
 
-<<<<<<< HEAD
 // GET LIBRARY BY ID //
 router.get('/:libraryId', async (req, res) => {
   const libraryId = req.params.libraryId;
@@ -56,11 +55,5 @@ router.get('/', async (req, res) => {
 // const libraries = await Library.findAll();
 // console.log(libraries.every(library => library instanceof Library)); // true
 // console.log("All users:", JSON.stringify(libraries, null, 2));
-
-=======
->>>>>>> parent of e26c7fa... Creating library edits
-
-
-
 
 module.exports = router;

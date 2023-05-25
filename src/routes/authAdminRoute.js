@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const { secret } = require("../middleware/authentication-jwt");
-const userProvider = require("../providers/userProvider");
+const { secret } = require("../middleware");
+const { userProvider } = require("../providers");
 
 
 router.post("/", async (req, res) => {

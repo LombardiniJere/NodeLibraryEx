@@ -15,10 +15,12 @@ axios
         const user = response.data;
         console.log("Usuario encontrado!!");
         console.log(
-          `El usuario se llama ${user.name} ${user.lastName} y tiene ${user.Tickets.length} tickets`
+          `El usuario se llama ${user.name} ${user.lastName}`
         );
       });
   })
   .catch(function (error) {
     console.log(error);
   });
+
+  
