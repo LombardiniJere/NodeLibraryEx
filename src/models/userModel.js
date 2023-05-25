@@ -47,6 +47,11 @@ const User = sequelize.define("Users", {
       min: 3,
     },
   },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "USER",
+  }
 });
 
 // Associations DB
