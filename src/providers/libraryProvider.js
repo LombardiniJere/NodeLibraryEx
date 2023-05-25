@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { libraryModel } = require("../models");
 
 const createLibrary = async (libraryOptions) => {
@@ -17,7 +18,7 @@ const getLibrary = async (id) => {
     if (library) {
       return library;
     } else {
-      throw new Error("Library no encontrado");
+      throw new Error("Library not found");
     }
   } catch (error) {
     throw error;

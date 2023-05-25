@@ -3,6 +3,24 @@ const router = express.Router();
 const { userService } = require("../services");
 const { authAdminRoute } = require("../middleware");
 
+
+/* CREATE USER */
+router.post('/', async (req, res) => {
+  const { name, lastName, email, password } = req.body;
+  try {
+    const newUser = await userService.createUser({
+      name,
+      lastName,
+      email,
+      password,
+    });
+    res.status( 201 ).json( { message: "User successfully created", newUser } );
+  } catch (error) {
+    res.status( 500 ).json({ message: "An error occurred", error: error.message });
+  };
+});
+
+
 /* GET USER BY ID */
 router.get('/:userId', async (req, res) => {
   const userId = req.params.userId;
@@ -32,22 +50,6 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "An error occurred", error: error.message });
   }
-});
-
-/* CREATE USER */
-router.post('/', async (req, res) => {
-  const { name, lastName, email, password } = req.body;
-  try {
-    const newUser = await userService.createUser({
-      name,
-      lastName,
-      email,
-      password,
-    });
-    res.status( 201 ).json( { message: "User successfully created", newUser } );
-  } catch (error) {
-    res.status( 500 ).json({ message: "An error occurred", error: error.message });
-  };
 });
 
 /* UPDATE USER */

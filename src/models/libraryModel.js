@@ -23,10 +23,6 @@ const Library = sequelize.define("Libraries", {
   location: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      max: 100,
-      min: 3,
-    },
   },
   phone: {
     type: DataTypes.STRING,
