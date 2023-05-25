@@ -4,7 +4,7 @@ const { libraryService } = require("../services");
 
 
 /* CREATE LIBRARY */
-router.post('/', async (req, res) => {
+router.post('/library', async (req, res) => {
   const { id, name, location, phone } = req.body;
   try {
     const newLibrary = await libraryService.createLibrary({
