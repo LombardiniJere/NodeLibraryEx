@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
+const Book = require("./bookModel");
 
 const Library = sequelize.define("Libraries", {
   id: {
@@ -32,7 +33,6 @@ const Library = sequelize.define("Libraries", {
     allowNull: false,
     validate: {
       isNumeric: true,
-      max: 30,
     },
   },
 });

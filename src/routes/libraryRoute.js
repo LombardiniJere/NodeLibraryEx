@@ -1,14 +1,13 @@
 const express = require('express');
+const libraryService = require("../services/libraryService");
 const router = express.Router();
-const { libraryService } = require("../services");
 
 
 /* CREATE LIBRARY */
 router.post('/library', async (req, res) => {
-  const { id, name, location, phone } = req.body;
+  const { name, location, phone } = req.body;
   try {
     const newLibrary = await libraryService.createLibrary({
-      id, 
       name,
       location,
       phone,
@@ -21,6 +20,7 @@ router.post('/library', async (req, res) => {
   };
 });
 
+<<<<<<< HEAD
 // GET LIBRARY BY ID //
 router.get('/:libraryId', async (req, res) => {
   const libraryId = req.params.libraryId;
@@ -57,6 +57,8 @@ router.get('/', async (req, res) => {
 // console.log(libraries.every(library => library instanceof Library)); // true
 // console.log("All users:", JSON.stringify(libraries, null, 2));
 
+=======
+>>>>>>> parent of e26c7fa... Creating library edits
 
 
 
