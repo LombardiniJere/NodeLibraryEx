@@ -1,6 +1,7 @@
 const express = require('express');
-const { userService } = require("../services");
 const router = express.Router();
+const { userService } = require("../services");
+const { authAdminRoute } = require("../middleware");
 
 /* GET USER BY ID */
 router.get('/:userId', async (req, res) => {

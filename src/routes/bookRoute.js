@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const bookService = require("../services/bookService");
-
+const { bookService } = require("../services");
+const { authAdminRoute } = require("../middleware");
 
 // CREATE BOOK //
 router.post("/", async (req, res) => {
@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
 
 
 // // UPDATE BOOK BY ISBN //
-// router.put('/:bookId', async (req, res) => {
+// router.put('/:bookId', authAdminRoute, async (req, res) => {
 //   const bookId = req.params.bookId;
 //   const { isbn, name, author, year, libraryId } = req.body;
 //   try {
@@ -73,7 +73,7 @@ router.get('/', async (req, res) => {
 // });
 
 // // DELETE BOOK BY ISBN //
-// router.delete('/:bookId', async (req, res) => {
+// router.delete('/:bookId', authAdminRoute, async (req, res) => {
 //   const bookId = req.params.bookId;
 //   try {
 //     const book = await bookService.deleteBook(bookId);

@@ -1,6 +1,6 @@
 const bookRouter = require("./bookRoute");
 const userRouter = require("./userRoute");
 const libraryRouter = require("./libraryRoute");
-const authAdminRoute = require("./authAdminRoute");
+const authAdminRouter = require("./authAdminRoute");
 
-module.exports = { bookRouter, userRouter, authAdminRoute, libraryRouter };
+module.exports = { bookRouter, userRouter, authAdminRouter, libraryRouter };
