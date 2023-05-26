@@ -49,11 +49,5 @@ const User = sequelize.define("Users", {
   },
 });
 
-// Associations DB
-// User.hasMany(Book);
 
 module.exports = User;
-
-// Users and Books:
-// A user can have multiple books borrowed or associated with them.
-// A book belongs to a single user (borrower).

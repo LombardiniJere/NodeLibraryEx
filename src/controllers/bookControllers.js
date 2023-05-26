@@ -2,7 +2,8 @@ const { bookService } = require("../services");
 const { UserNotFoundErr } = require("../errors/userNotFound");
 
 // CREATE A BOOK //
-const createBook = async (res, req) => {
+const createBook = async (req, res) => {
+  const { user } =  req; // extraigo el user del req, se puede usar para ver quien creo libro-library
   const { isbn, name, author, year, library } = req.body;
   try {
     if ( !isbn || !name || !author || !year || !library ) {
@@ -15,6 +16,7 @@ const createBook = async (res, req) => {
       year,
       library
     });
+    console.log( `Usuario ${user.userName} creo ${newBook.isbn} libro` );
     res.status(201).json(newBook);
   } catch (error) {
     if (error instanceof UserNotFoundErr) {

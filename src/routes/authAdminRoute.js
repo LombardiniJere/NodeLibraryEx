@@ -10,12 +10,12 @@ router.post("/", async (req, res) => {
   // Verificación de que los datos del usuario son correctos
 
   if (user === "admin" && password === "admin") {
-    const token = jwt.sign({ user, role: "Admin" }, secret);
+    const token = jwt.sign({ userName: user, role: "ADMIN" }, secret);
     res.json({ token });
   } else {
-    const dbUser = await userProvider.validateUser(user, password);
+    const dbUser = await userProvider.validateUser(user, password); // si != ADMIN, se llama al userProvider para validar credenciales en la DB
     if (dbUser) {
-      const token = jwt.sign({ user: dbUser.email }, secret);
+      const token = jwt.sign({ userName: dbUser.email, role: "USER" }, secret);
       res.json({ token });
     } else {
       res.status(401).json({ message: "Autenticación fallida" });

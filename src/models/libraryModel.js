@@ -1,8 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
-const Book = require("./bookModel");
 
-const Library = sequelize.define("Libraries", {
+const Library = sequelize.define("Library", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -33,9 +32,6 @@ const Library = sequelize.define("Libraries", {
   },
 });
 
-// Associations DB
-// Library.hasMany(Book);
+
 
 module.exports = Library;
-// Libraries and Books:
-// A library can have multiple books in its collection.
