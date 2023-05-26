@@ -17,8 +17,6 @@ passport.use(
   )
 );
 
-const authMiddleware = passport.authenticate("jwt", { session: false }); // req tiene un JWT autentificamos
-
 // authIsAdmin able to create-delete user
 const authIsAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user.role === "ADMIN") {
@@ -28,4 +26,4 @@ const authIsAdmin = (req, res, next) => {
 };
 
 
-module.exports = { secret, authMiddleware, authIsAdmin };
+module.exports = { secret, authIsAdmin };

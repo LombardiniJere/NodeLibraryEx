@@ -1,5 +1,5 @@
-
-
+const passport = require("passport");
+const passportJwt = require("passport-jwt");
 
 
 const authIsUser = (req, res, next) => {
@@ -8,7 +8,6 @@ const authIsUser = (req, res, next) => {
   }
   res.status(401).json({ error: "Not Authenticated" });
 };
-
 
 
 module.exports = authIsUser;

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8888;
-const { authMiddleware } = require("./middleware");
+const { authCheck } = require("./middleware");
 const { initializeDB } = require("./config");
 const { bookRouter, authAdminRouter, userRouter, libraryRouter } = require("./routes");
 const { mdwLogging } = require("./middleware");
@@ -10,7 +10,7 @@ const { mdwLogging } = require("./middleware");
 app.use(express.json());
 app.use(mdwLogging);
 app.use("/login", authAdminRouter);
-app.use("/user", authMiddleware, userRouter);
+app.use("/user", authCheck, userRouter);
 app.use("/library", libraryRouter);
 app.use("/book", bookRouter);
 
