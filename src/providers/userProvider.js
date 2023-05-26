@@ -6,7 +6,6 @@ const { UserNotFoundErr } = require("../errors/userNotFound");
 const createUser = async (userOptions) => {
   try {
     const newUser = await userModel.create(userOptions);
-    // const ticket = await Ticket.create({ used: false, UserId: newUser.id });
     return newUser;
   } catch (error) {
     throw error;

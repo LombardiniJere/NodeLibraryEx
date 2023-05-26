@@ -1,4 +1,5 @@
 const mdwLogging = require("./logging");
-const { secret, authMiddleware, authIsAdmin } = require("./authAdmin");
+const { secret, authMiddleware, authIsAdmin, authIsUser } = require("./authAdmin");
+const { authIsUser } = require("./authUser");
 
-module.exports = { mdwLogging, secret, authMiddleware, authIsAdmin };
+module.exports = { mdwLogging, secret, authMiddleware, authIsAdmin, authIsUser };

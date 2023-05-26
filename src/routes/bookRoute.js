@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { bookService } = require("../services");
 const { authIsAdmin } = require("../middleware");
+const { authMiddleware } = require("../middleware");
+
 
 // CREATE BOOK //
-router.post("/", async (req, res) => {
+router.post("/",authMiddleware, async (req, res) => {
   const { isbn, name, author, year, libraryId } = req.body;
   try {
     const newBook = await bookService.createBook({

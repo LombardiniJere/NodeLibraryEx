@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { userService } = require("../services");
-const { authIsAdmin } = require("../middleware");
+
 
 
 /* CREATE USER */
-router.post('/', authIsAdmin,  async (req, res) => {
+router.post('/',  async (req, res) => {
   const { name, lastName, email, password } = req.body;
   try {
     const newUser = await userService.createUser({
