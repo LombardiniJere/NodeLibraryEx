@@ -13,9 +13,9 @@ axios
       })
       .then((response) => {
         const user = response.data;
-        console.log("Usuario encontrado!!");
+        console.log("User found!!");
         console.log(
-          `El usuario se llama ${user.name} ${user.lastName}`
+          `User is name: ${user.name} Surname: ${user.lastName}`
         );
       });
   })
