@@ -1,8 +1,5 @@
 const passport = require("passport");
 
-
-const authMiddleware = passport.authenticate("jwt", { session: false }); // req tiene un JWT autentificamos
-
 // authIsAdmin able to create-delete user
 const authIsAdmin = (req, res, next) => {
   const { user } = req.body;
@@ -14,8 +11,4 @@ const authIsAdmin = (req, res, next) => {
 };
 
 
-<<<<<<< HEAD
 module.exports = authIsAdmin;
-=======
-module.exports = { secret, authMiddleware, authIsAdmin };
->>>>>>> parent of 0c93936... more modifications authentications
