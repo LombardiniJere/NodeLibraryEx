@@ -1,6 +1,5 @@
 const { Op } = require("sequelize");
-const { userModel, Ticket } = require("../models");
-const { UserNotFoundErr } = require("../errors/userNotFound");
+const { userModel } = require("../models");
 
 
 const createUser = async (userOptions) => {
@@ -18,7 +17,7 @@ const getUser = async (id) => {
     if (user) {
       return user;
     } else {
-      throw new Error("Usuario no encontrado");
+      throw new Error("User not found");
     }
   } catch (error) {
     throw error;

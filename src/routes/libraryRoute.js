@@ -5,7 +5,7 @@ const { authIsAdmin } = require("../middleware");
 
 
 /* CREATE LIBRARY */
-router.post('/', async (req, res) => {
+router.post('/', authIsAdmin, async (req, res) => {
   const { name, location, phone } = req.body;
   try {
     if (req.user.role !== 'ADMIN') {
