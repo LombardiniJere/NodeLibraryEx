@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
 
-const User = sequelize.define("Users", {
+const User = sequelize.define("User", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -16,8 +16,6 @@ const User = sequelize.define("Users", {
     allowNull: false,
     validate: {
       isAlpha: true,
-      max: 50,
-      min: 3,
     },
   },
   lastName: {
@@ -25,8 +23,6 @@ const User = sequelize.define("Users", {
     allowNull: false,
     validate: {
       isAlpha: true,
-      max: 50,
-      min: 3,
     },
   },
   email: {
@@ -35,19 +31,12 @@ const User = sequelize.define("Users", {
     unique: true,
     validate: {
       isEmail: true,
-      max: 50,
-      min: 3,
     },
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      max: 50,
-      min: 3,
-    },
   },
 });
-
 
 module.exports = User;

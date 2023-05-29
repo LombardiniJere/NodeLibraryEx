@@ -4,9 +4,16 @@ const Library = require("./libraryModel");
 
 
 const Book = sequelize.define("Book", {
-  isbn: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
+    validate: {
+      isNumeric: true,
+    },
+  },
+  isbn: {
+    type: DataTypes.INTEGER,
     validate: {
       isNumeric: true,
     },
@@ -29,7 +36,7 @@ const Book = sequelize.define("Book", {
   libraryId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  },
+  }
 });
 
 // Associations DB

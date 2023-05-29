@@ -25,10 +25,10 @@ router.post("/", authCheck, async (req, res) => {
 });
 
 // GET BOOK BY ISBN //
-router.get('/:bookIsbn', async (req, res) => {
-const bookIsbn = req.params.bookIsbn;
+router.get('/:bookId', async (req, res) => {
+const bookId = req.params.bookId;
   try {
-    const book = await bookService.getBook(bookIsbn);
+    const book = await bookService.getBook(bookId);
     res.status(201).json(book);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// // UPDATE BOOK BY ISBN //
+// // UPDATE BOOK BY ID //
 // router.put('/:bookId', authIsAdmin, async (req, res) => {
 //   const bookId = req.params.bookId;
 //   const { isbn, name, author, year, libraryId } = req.body;
@@ -74,7 +74,7 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-// // DELETE BOOK BY ISBN //
+// // DELETE BOOK BY ID //
 // router.delete('/:bookId', authIsAdmin, async (req, res) => {
 //   const bookId = req.params.bookId;
 //   try {

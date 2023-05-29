@@ -4,20 +4,19 @@ const { bookModel } = require("../models");
 const createBook = async (bookOptions) => {
   try {
     const newBook = await bookModel.create(bookOptions);
-    // const ticket = await Ticket.create({ used: false, BookIsbn: newBook.isbn });
     return newBook;
   } catch (error) {
     throw error;
   }
 };
 
-const getBook = async (isbn) => {
+const getBook = async (id) => {
   try {
-    const book = await bookModel.findByPk(isbn, { include: [{ all: true }] });
+    const book = await bookModel.findByPk(id, { include: [{ all: true }] });
     if (book) {
       return book;
     } else {
-      throw new Error("Libro no encontrado");
+      throw new Error("Book not Found on DB");
     }
   } catch (error) {
     throw error;
@@ -36,7 +35,7 @@ const getBooks = async (criteria) => {
       return Books;
     } else {
       throw new Error(
-        "No se encontraron books con ese criterio de busqueda"
+        "No books were found with these criteria"
       );
     }
   } catch (error) {
@@ -44,31 +43,33 @@ const getBooks = async (criteria) => {
   }
 };
 
-// const updateBook = async (bookIsbn, bookOptions) => {
+// const updateBook = async (bookId, bookOptions) => {
 //   try {
-//     await getBook(bookIsbn);
+//     await getBook(bookId);
 //     const [numRowsUpdated] = await bookModel.update(bookOptions, {
-//       where: { isbn: bookIsbn },
+//       where: { id: bookId },
 //     });
 //     console.log(`Se actualizaron ${numRowsUpdated} filas en la DB`);
-//     return bookModel.findByPk(bookIsbn);
+//     return bookModel.findByPk(bookId);
 //   } catch (error) {
 //     throw error;
 //   }
 // };
 
-// const deleteBook = async (bookIsbn) => {
+// const deleteBook = async (bookId) => {
+//   const { name, libraryId } = req.body;
 //   try {
-//     return bookModel.destroy({ where: { isbn: bookIsbn } });
+//     console.log(`Book title: ${name} from ${libraryId} was deleted`);
+//     return bookModel.destroy({ where: { id: bookId } });
 //   } catch (error) {
 //     throw error;
 //   }
 // };
 
-// const validateBook = async (isbn) => {
+// const validateBook = async (id) => {
 //   try {
 //     const book = await bookModel.findOne({
-//       where: { isbn },
+//       where: { id },
 //     });
 //     if (book) {
 //       return book;

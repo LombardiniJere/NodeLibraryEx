@@ -1,7 +1,8 @@
 const { bookProvider } = require("../providers");
 
-const getBook = async (isbn) => {
-  return await bookProvider.getBook(isbn);
+
+const getBook = async (id) => {
+  return await bookProvider.getBook(id);
 };
 
 const getBooks = async (options) => {

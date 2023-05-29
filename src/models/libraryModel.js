@@ -32,6 +32,4 @@ const Library = sequelize.define("Library", {
   },
 });
 
-
-
 module.exports = Library;
