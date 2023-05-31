@@ -1,0 +1,21 @@
+{
+  "name": "nodelibraryex",
+  "version": "1.0.0",
+  "description": "NodeJS Exercise",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Lombardini Jeremias",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "sequelize": "^6.31.1",
+    "sqlite3": "^5.1.6"
+  }
+}
