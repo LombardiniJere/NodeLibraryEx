@@ -14,13 +14,13 @@ const getLibraries = async (options) => {
   return await libraryProvider.getLibraries(options);
 };
 
-// const updateLibrary = async (id, user) => {
-//   return await libraryProvider.updateLibrary(id, user);
-// };
+const updateLibrary = async (id, library) => {
+  return await libraryProvider.updateLibrary(id, library);
+};
 
-// const deleteLibrary = async (id) => {
-//   return await libraryProvider.deleteLibrary(id);
-// };
+const deleteLibrary = async (id) => {
+  return await libraryProvider.deleteLibrary(id);
+};
 
 
-module.exports = { createLibrary, getLibrary, getLibraries };
+module.exports = { createLibrary, getLibrary, getLibraries, updateLibrary, deleteLibrary };

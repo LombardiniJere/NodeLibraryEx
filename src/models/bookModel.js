@@ -32,12 +32,15 @@ const Book = sequelize.define("Book", {
   },
 });
 
+const bookLibraryColumn = "libraryId";
+
 // Associations DB
 Book.belongsTo(Library, {
-  foreignKey: 'libraryId',
-  onDelete: 'CASCADE',
+  foreignKey: bookLibraryColumn,
+  onDelete: "CASCADE",
 });
 
-Library.hasMany(Book);
+Library.hasMany(Book, { foreignKey: bookLibraryColumn });
+
 
 module.exports = Book;

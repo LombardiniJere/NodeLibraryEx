@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { userService } = require("../services");
-
+const { authIsAdmin } = require("../middleware");
 
 
 /* CREATE USER */
-router.post('/',  async (req, res) => {
+router.post('/', async (req, res) => {
   const { name, lastName, email, password } = req.body;
   try {
     const newUser = await userService.createUser({
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 });
 
 /* UPDATE USER */
-router.put('/:userId', async (req, res) => {
+router.put('/:userId', authIsAdmin, async (req, res) => {
   const userId = req.params.userId;
   const { name, lastName, email, password } = req.body;
   try {
@@ -70,7 +70,7 @@ router.put('/:userId', async (req, res) => {
 });
 
 /* DELETE USER */
-router.delete('/:userId', async (req, res) => {
+router.delete('/:userId', authIsAdmin, async (req, res) => {
   const userId = req.params.userId;
   try {
     const user = await userService.deleteUser(userId);

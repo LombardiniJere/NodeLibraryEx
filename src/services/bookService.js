@@ -13,13 +13,13 @@ const createBook = async (book) => {
   return await bookProvider.createBook(book);
 };
 
-// const updateBook = async (id, book) => {
-//   return await bookProvider.updateBook(id, book);
-// };
+const updateBook = async (id, book) => {
+  return await bookProvider.updateBook(id, book);
+};
 
-// const deleteBook = async (id) => {
-//   return await bookProvider.deleteBook(id);
-// };
+const deleteBook = async (id) => {
+  return await bookProvider.deleteBook(id);
+};
 
 
-module.exports = { createBook, getBook, getBooks };
+module.exports = { createBook, getBook, getBooks, updateBook, deleteBook };

@@ -9,9 +9,9 @@ const { authAdminRouter, bookRouter, userRouter, libraryRouter } = require("./ro
 app.use(express.json());
 app.use(mdwLogging);
 app.use("/login", authAdminRouter);
-app.use("/library",authIsAdmin, libraryRouter);
-app.use("/user", authIsAdmin, userRouter);
-app.use("/book", bookRouter);
+app.use("/library", authCheck, libraryRouter);
+app.use("/user", authCheck, userRouter);
+app.use("/book", authCheck, bookRouter);
 
 app.listen(PORT, async () => {
   await initializeDB();

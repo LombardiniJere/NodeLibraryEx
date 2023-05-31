@@ -36,7 +36,7 @@ const getUsers = async (criteria) => {
       return users;
     } else {
       throw new Error(
-        "No se encontraron usuarios con ese criterio de busqueda"
+        "No users were found with these criteria"
       );
     }
   } catch (error) {
@@ -50,7 +50,7 @@ const updateUser = async (userId, userOptions) => {
     const [numRowsUpdated] = await userModel.update(userOptions, {
       where: { id: userId },
     });
-    console.log(`Se actualizaron ${numRowsUpdated} filas en la DB`);
+    console.log(`${numRowsUpdated} rows updated on DB`);
     return userModel.findByPk(userId);
   } catch (error) {
     throw error;

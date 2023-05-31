@@ -43,46 +43,47 @@ const getBooks = async (criteria) => {
   }
 };
 
-// const updateBook = async (bookId, bookOptions) => {
-//   try {
-//     await getBook(bookId);
-//     const [numRowsUpdated] = await bookModel.update(bookOptions, {
-//       where: { id: bookId },
-//     });
-//     console.log(`Se actualizaron ${numRowsUpdated} filas en la DB`);
-//     return bookModel.findByPk(bookId);
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+const updateBook = async (bookId, bookOptions) => {
+  try {
+    await getBook(bookId);
+    const [numRowsUpdated] = await bookModel.update(bookOptions, {
+      where: { id: bookId },
+    });
+    console.log(`${numRowsUpdated} rows updated on DB`);
+    return bookModel.findByPk(bookId);
+  } catch (error) {
+    throw error;
+  }
+};
 
-// const deleteBook = async (bookId) => {
-//   const { name, libraryId } = req.body;
-//   try {
-//     console.log(`Book title: ${name} from ${libraryId} was deleted`);
-//     return bookModel.destroy({ where: { id: bookId } });
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+const deleteBook = async (bookId) => {
+  try {
+    return bookModel.destroy({ where: { id: bookId } });
+  } catch (error) {
+    throw error;
+  }
+};
 
-// const validateBook = async (id) => {
-//   try {
-//     const book = await bookModel.findOne({
-//       where: { id },
-//     });
-//     if (book) {
-//       return book;
-//     } else {
-//       return false;
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+const validateBook = async (id) => {
+  try {
+    const book = await bookModel.findOne({
+      where: { id },
+    });
+    if (book) {
+      return book;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
 
 module.exports = {
   createBook,
   getBook,
   getBooks,
+  updateBook,
+  deleteBook,
+  validateBook
 };

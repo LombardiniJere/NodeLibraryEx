@@ -13,11 +13,10 @@ router.post('/', authIsAdmin, async (req, res) => {
       location,
       phone,
     });
-    res.status( 201 ).json(newLibrary);
+    res.status( 201 ).json({ message: "Library successfully created", newLibrary });
   } catch (error) {
-    res.status( 500 ).json({
-      message: error.message
-    });
+    res.status( 500 ).json({ message: "An error occurred creating a Library", error: error.message }
+    );
   };
 });
 
@@ -51,5 +50,32 @@ router.get('/', async (req, res) => {
   };
 });
 
+// UPDATE LIBRARY BY ID //
+router.put('/:libraryId', authIsAdmin, async (req, res) => {
+  const libraryId = req.params.libraryId;
+  const { id , name, location, phone } = req.body;
+  try {
+    const newLibrary = await libraryService.updateLibrary(libraryId, {
+      id,
+      name,
+      location,
+      phone
+    });
+    res.status(200).json(newLibrary);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// DELETE LIBRARY BY ID //
+router.delete('/:libraryId', authIsAdmin, async (req, res) => {
+  const libraryId = req.params.libraryId;
+  try {
+    const library = await libraryService.deleteLibrary(libraryId);
+    res.status(200).json({ message: "Library successfully deleted", library });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+});
 
 module.exports = router;
