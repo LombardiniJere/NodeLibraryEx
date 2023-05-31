@@ -1,6 +1,25 @@
 const express = require('express');
-const userService = require("../services/user");
 const router = express.Router();
+const { userService } = require("../services");
+
+
+
+/* CREATE USER */
+router.post('/',  async (req, res) => {
+  const { name, lastName, email, password } = req.body;
+  try {
+    const newUser = await userService.createUser({
+      name,
+      lastName,
+      email,
+      password,
+    });
+    res.status( 201 ).json( { message: "User successfully created", newUser } );
+  } catch (error) {
+    res.status( 500 ).json({ message: "An error occurred", error: error.message });
+  };
+});
+
 
 /* GET USER BY ID */
 router.get('/:userId', async (req, res) => {
@@ -9,7 +28,7 @@ router.get('/:userId', async (req, res) => {
     const user = await userService.getUser(userId);
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "An error occurred", error: error.message });
   }
 });
 
@@ -29,26 +48,8 @@ router.get('/', async (req, res) => {
 
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "An error occurred", error: error.message });
   }
-});
-
-/* CREATE USER */
-router.post('/', async (req, res) => {
-  const { name, lastName, email, password } = req.body;
-  try {
-    const newUser = await userService.createUser({
-      name,
-      lastName,
-      email,
-      password
-    });
-    res.status( 201 ).json(newUser);
-  } catch (error) {
-    res.status( 500 ).json({
-      message: error.message
-    });
-  };
 });
 
 /* UPDATE USER */
@@ -62,9 +63,9 @@ router.put('/:userId', async (req, res) => {
       email,
       password,
     });
-    res.status(200).json(newUser);
+    res.status(200).json({ message: "User successfully updated", newUser });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "An error occurred", error: error.message });
   }
 });
 
@@ -73,9 +74,9 @@ router.delete('/:userId', async (req, res) => {
   const userId = req.params.userId;
   try {
     const user = await userService.deleteUser(userId);
-    res.status(200).json(user);
+    res.status(201).json({ message: "User successfully deleted", user });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "An error occurred", error: error.message });
   }
 });
 

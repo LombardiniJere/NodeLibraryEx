@@ -1,10 +1,10 @@
 const { Op } = require("sequelize");
-const { User, Ticket  } = require("../models");
+const { userModel } = require("../models");
+
 
 const createUser = async (userOptions) => {
   try {
-    const newUser = await User.create(userOptions);
-    const ticket = await Ticket.create({ used: false, UserId: newUser.id });
+    const newUser = await userModel.create(userOptions);
     return newUser;
   } catch (error) {
     throw error;
@@ -13,11 +13,11 @@ const createUser = async (userOptions) => {
 
 const getUser = async (id) => {
   try {
-    const user = await User.findByPk(id, { include: [{ all: true }] });
+    const user = await userModel.findByPk(id, { include: [{ all: true }] });
     if (user) {
       return user;
     } else {
-      throw new Error("Usuario no encontrado");
+      throw new Error("User not found");
     }
   } catch (error) {
     throw error;
@@ -30,7 +30,7 @@ const getUsers = async (criteria) => {
     if (criteria) {
       options = { ...options, where: { [Op.or]: criteria } };
     }
-    const users = await User.findAll(options);
+    const users = await userModel.findAll(options);
 
     if (users) {
       return users;
@@ -47,11 +47,11 @@ const getUsers = async (criteria) => {
 const updateUser = async (userId, userOptions) => {
   try {
     await getUser(userId);
-    const [numRowsUpdated] = await User.update(userOptions, {
+    const [numRowsUpdated] = await userModel.update(userOptions, {
       where: { id: userId },
     });
     console.log(`Se actualizaron ${numRowsUpdated} filas en la DB`);
-    return User.findByPk(userId);
+    return userModel.findByPk(userId);
   } catch (error) {
     throw error;
   }
@@ -59,7 +59,7 @@ const updateUser = async (userId, userOptions) => {
 
 const deleteUser = async (userId) => {
   try {
-    return User.destroy({ where: { id: userId } });
+    return userModel.destroy({ where: { id: userId } });
   } catch (error) {
     throw error;
   }
@@ -67,7 +67,7 @@ const deleteUser = async (userId) => {
 
 const validateUser = async (email, password) => {
   try {
-    const user = await User.findOne({
+    const user = await userModel.findOne({
       where: { email, password },
     });
     if (user) {

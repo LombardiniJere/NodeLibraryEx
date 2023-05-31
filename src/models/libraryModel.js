@@ -1,43 +1,35 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
 
-const User = sequelize.define("Users", {
+const Library = sequelize.define("Library", {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+    validate: {
+      isNumeric: true,
+    },
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      isAlpha: true,
-      max: 30,
+      max: 50,
       min: 3,
     },
   },
-  lastName: {
+  location: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      isAlpha: true,
-      max: 30,
-      min: 3,
-    },
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    validate: {
-      isEmail: true,
-      max: 30,
-      min: 3,
-    },
-  },
-  password: {
+  phone: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      max: 15,
-      min: 3,
+      isNumeric: true,
     },
   },
 });
 
-module.exports = User;
+module.exports = Library;

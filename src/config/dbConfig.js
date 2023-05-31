@@ -5,5 +5,4 @@ const sequelize = new Sequelize ({
   storage: "./database.sqlite",  // donde va a almacenar la data
 });
 
-
 module.exports = sequelize;

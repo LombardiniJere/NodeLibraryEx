@@ -1,13 +1,12 @@
 const sequelize = require("./dbConfig");
 
-
 const initializeDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Conexión a la DB establecida");
+    console.log("Connection to DB established");
     await sequelize.sync({ force: false });
   } catch (error) {
-    console.error("Hubo un error iniciando DB");
+    console.error("Synchronizing DB failed");
   }
 };
 

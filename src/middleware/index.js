@@ -1,4 +1,7 @@
 const mdwLogging = require("./logging");
-const { secret, authMiddleware, authIsAdmin } = require("./authentication-jwt");
+const authIsAdmin = require("./authAdmin");
+const authIsUser = require("./authUser");
+const authCheck  = require("./authCheck");
+const secret  = require("./jwtStrategy");
 
-module.exports = { mdwLogging, secret, authMiddleware, authIsAdmin };
+module.exports = { mdwLogging, authCheck, authIsAdmin, authIsUser, secret };

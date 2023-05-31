@@ -1,7 +1,6 @@
 const axios = require("axios");
 const payload = { user: "admin", password: "admin" };
 
-
 axios
   .post("http://localhost:8888/login", payload)
   .then(function (response) {
@@ -13,12 +12,13 @@ axios
       })
       .then((response) => {
         const user = response.data;
-        console.log("Usuario encontrado!!");
+        console.log("User found!!");
         console.log(
-          `El usuario se llama ${user.name} ${user.lastName} y tiene ${user.Tickets.length} tickets`
+          `name: ${user.name} Lastname: ${user.lastName}`
         );
       });
   })
   .catch(function (error) {
     console.log(error);
   });
+  

@@ -1,39 +1,42 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config");
 
-const Book = sequelize.define("Books", {
-  isbn: {
+const User = sequelize.define("User", {
+  id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     primaryKey: true,
+    autoIncrement: true,
     validate: {
       isNumeric: true,
-
     },
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      
-      
+      isAlpha: true,
     },
   },
-  author: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  year: {
+  lastName: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      isNumeric: true,
-      
+      isAlpha: true,
     },
   },
-  bookstore: {
-    type: DataTypes.INTEGER,
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true,
+    },
+  },
+  password: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });
 
-module.exports = Book;
+module.exports = User;

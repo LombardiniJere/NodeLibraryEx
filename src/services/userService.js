@@ -1,4 +1,9 @@
-const userProvider = require("../providers/userProvider");
+const { userProvider } = require("../providers");
+
+
+const createUser = async (user) => {
+  return await userProvider.createUser(user);
+};
 
 const getUser = async (id) => {
   return await userProvider.getUser(id);
@@ -6,10 +11,6 @@ const getUser = async (id) => {
 
 const getUsers = async (options) => {
   return await userProvider.getUsers(options);
-};
-
-const createUser = async (user) => {
-  return await userProvider.createUser(user);
 };
 
 const updateUser = async (id, user) => {
@@ -20,6 +21,5 @@ const deleteUser = async (id) => {
   return await userProvider.deleteUser(id);
 };
 
-const queryUser = (name) => {};
 
-module.exports = { getUser, getUsers, createUser, updateUser, deleteUser };
+module.exports = { createUser, getUser, getUsers, updateUser, deleteUser };
