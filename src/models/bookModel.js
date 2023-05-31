@@ -8,9 +8,6 @@ const Book = sequelize.define("Book", {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    validate: {
-      isNumeric: true,
-    },
   },
   isbn: {
     type: DataTypes.INTEGER,
@@ -33,10 +30,6 @@ const Book = sequelize.define("Book", {
       isNumeric: true,
     },
   },
-  libraryId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  }
 });
 
 // Associations DB

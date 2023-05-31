@@ -8,9 +8,6 @@ const { authIsAdmin } = require("../middleware");
 router.post('/', authIsAdmin, async (req, res) => {
   const { name, location, phone } = req.body;
   try {
-    if (req.user.role !== 'ADMIN') {
-      return res.status(403).json({ message: 'Only admin users can create a library' });
-    }
     const newLibrary = await libraryService.createLibrary({
       name,
       location,
