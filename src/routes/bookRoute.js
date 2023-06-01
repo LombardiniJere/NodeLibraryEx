@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { bookService } = require("../services");
-const { authIsAdmin } = require("../middleware");
+const { authIsAdmin, authIsUser } = require("../middleware");
 
 
 // CREATE BOOK //
@@ -24,7 +24,7 @@ router.post("/", authIsAdmin, async (req, res) => {
 });
 
 // GET BOOK BY ID //
-router.get('/:bookId', async (req, res) => {
+router.get('/:bookId', authIsUser, async (req, res) => {
 const bookId = req.params.bookId;
   try {
     const book = await bookService.getBook(bookId);
@@ -35,7 +35,7 @@ const bookId = req.params.bookId;
 });
 
 // GET BOOKs BY NAME, AUTHOR, ISBN //
-router.get('/', async (req, res) => {
+router.get('/', authIsUser, async (req, res) => {
   const { name, isbn, author } = req.query;
   try {
     let books;

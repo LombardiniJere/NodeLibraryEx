@@ -1,7 +1,7 @@
 const express = require('express');
 const { libraryService } = require("../services");
 const router = express.Router();
-const { authIsAdmin } = require("../middleware");
+const { authIsAdmin, authIsUser } = require("../middleware");
 
 
 /* CREATE LIBRARY */
@@ -21,7 +21,7 @@ router.post('/', authIsAdmin, async (req, res) => {
 });
 
 // GET LIBRARY BY ID //
-router.get('/:libraryId', async (req, res) => {
+router.get('/:libraryId', authIsUser, async (req, res) => {
   const libraryId = req.params.libraryId;
     try {
       const library = await libraryService.getLibrary(libraryId);
@@ -32,7 +32,7 @@ router.get('/:libraryId', async (req, res) => {
 });
 
 // GET LIBRARIES BY NAME, ID //
-router.get('/', async (req, res) => {
+router.get('/', authIsUser, async (req, res) => {
   const { name, id } = req.query;
   try {
     let libraries;

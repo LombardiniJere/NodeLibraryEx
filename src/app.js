@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8888;
 const { initializeDB } = require("./config");
-const { mdwLogging, authCheck, authIsAdmin } = require("./middleware");
+const { mdwLogging, authCheck } = require("./middleware");
 const { authAdminRouter, bookRouter, userRouter, libraryRouter } = require("./routes");
 
 
